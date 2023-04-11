@@ -1,0 +1,31 @@
+{
+  "name": "tabata-timer",
+  "version": "1.0.0",
+  "description": "Tabata timer",
+  "main": "app.js",
+  "scripts": {
+    "dev": "parcel src/index.html",
+    "deploy": "parcel build src/index.html --public-url /"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akyc/tabata-timer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akyc/tabata-timer/issues"
+  },
+  "homepage": "https://github.com/akyc/tabata-timer#readme",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.8.3",
+    "parcel": "^2.8.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.0-alpha3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
