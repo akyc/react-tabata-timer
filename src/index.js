@@ -10,25 +10,35 @@ const App = () => {
         rest: '00:00:20'
 
     }
+
     const [roundsAmount, setRoundsAmount] = useState(defaultSettings.rounds)
     const [roundsLength, setRoundsLength] = useState(defaultSettings.length)
     const [restLength, setRestLength] = useState(defaultSettings.rest)
-    const [countDown, setCountDown] = useState(0)
+    const [countDown, setCountDown] = useState()
     const [round, setRound] = useState()
     const [timerType, setTimerType] = useState()
+    const [currentLength, setCurrentLength] = useState(0)
+    const currents = {
+        'Подготовка': 3,
+        'Работа': timeConverter(roundsLength),
+        'Отдых': timeConverter(restLength)
+    }
+
     function roundTimer(time, type) {
+        setCurrentLength(currents[type])
         setTimerType(type)
         return new Promise(resolve => {
             let counter = setInterval(() => {
                 time = time - 1;
-                if (time < 0) {
+                if (time < 1) {
                     clearInterval(counter);
                     resolve();
                     return;
                 }
-                if (time == 1 || time == 2) {
+                if (time == 2 || time == 3) {
                     playSound('beep')
-                } else if (time == 0) {
+                }
+                if (time == 1) {
                     playSound('gorn')
                 }
                 setCountDown(time)
@@ -60,9 +70,6 @@ const App = () => {
             await roundTimer(timeConverter(restLength), 'Отдых')
 
         }
-        //playSound('beep')
-
-
     }
 
     return (
@@ -70,14 +77,16 @@ const App = () => {
             <div className="row d-flex justify-content-center">
                 <div className="col-3">
                     <h1 className="text-center">Tabata timer</h1>
-                    <p>{round && `Раунд: ${round}`}</p>
-                    <p>{timerType && timerType}</p>
+                    <p className="text-center">{round && `Раунд: ${round}`}</p>
                     <div className="text-center position-relative">
                         <svg width="200" height="200" style={{ transition: 'all 0.7s ease-in-out' }}>
                             <circle r="70" cx="100" cy="100" fill="transparent" stroke="lightgrey" strokeWidth="2rem" strokeDasharray="439.8" strokeDashoffset="0"></circle>
-                            <circle r="70" cx="100" cy="100" style={{ transformOrigin: '50% 50%', transform: 'rotate(-90deg)' }} fill="transparent" stroke="green" strokeWidth="2rem" strokeDasharray="439.8" strokeDashoffset={439.8 - (439.8 / timeConverter(roundsLength)) * (timeConverter(roundsLength) - countDown)}></circle>
+                            <circle r="70" cx="100" cy="100" style={{ transition: 'all 0.7s ease-in-out', transformOrigin: '50% 50%', transform: 'rotate(-90deg)' }} fill="transparent" strokeLinecap="round" stroke={timerType == 'Работа' ? 'red' : 'green'} strokeWidth="2rem" strokeDasharray="439.8" strokeDashoffset={439.8 - (439.8 / currentLength) * (currentLength - countDown)}></circle>
                         </svg>
-                        <h2 className="position-absolute" style={{ top: '50%', left: '50%', transform: 'translate(-50%,-50%)' }}>{countDown !== 0 && `${countDown + 1}`}</h2>
+                        <div className="position-absolute" style={{ top: '50%', left: '50%', transform: 'translate(-50%,-50%)' }}>
+                            <span className="fs-1">{countDown && `${countDown + 1}`}</span><br />
+                            <small>{timerType && timerType}</small>
+                        </div>
                     </div>
                     <form action="" onSubmit={handleSubmit}>
                         <div className="mb-3">
