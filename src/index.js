@@ -75,7 +75,7 @@ const App = () => {
     return (
         <div className="container">
             <div className="row d-flex justify-content-center">
-                <div className="col-3">
+                <div className="col-12 col-md-3">
                     <h1 className="text-center">Tabata timer</h1>
                     <p className="text-center">{round && `Раунд: ${round}`}</p>
                     <div className="text-center position-relative">
