@@ -4,7 +4,7 @@
   "description": "Tabata timer",
   "scripts": {
     "dev": "cp -R src/mp3 dist/ && parcel src/index.html",
-    "deploy": "parcel build src/index.html --public-url /"
+    "deploy": "parcel build src/index.html --public-url / && cp -R src/mp3 dist/"
   },
   "repository": {
     "type": "git",
