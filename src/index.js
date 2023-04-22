@@ -6,8 +6,8 @@ import { useState } from "react";
 const App = () => {
     const defaultSettings = {
         rounds: 2,
-        length: '00:00:30',
-        rest: '00:00:20'
+        length: '00:00:10',
+        rest: '00:00:05'
 
     }
 
@@ -30,15 +30,15 @@ const App = () => {
         return new Promise(resolve => {
             let counter = setInterval(() => {
                 time = time - 1;
-                if (time < 1) {
+                if (time < 0) {
                     clearInterval(counter);
                     resolve();
                     return;
                 }
-                if (time == 2 || time == 3) {
+                if (time == 1 || time == 2) {
                     playSound('beep')
                 }
-                if (time == 1) {
+                if (time == 0) {
                     playSound('gorn')
                 }
                 setCountDown(time)
@@ -50,12 +50,18 @@ const App = () => {
         return h * 60 * 60 + m * 60 + s
     }
     function playSound(type) {
+
         const sounds = {
             'beep': './mp3/beep.mp3',
             'gorn': './mp3/gorn.mp3',
         }
         const audio = new Audio(sounds[type]);
         audio.play()
+        return new Promise((resolve) => {
+            audio.onended = () => {
+                resolve()
+            }
+        })
     }
     async function handleSubmit(e) {
         e.preventDefault()
@@ -84,7 +90,7 @@ const App = () => {
                             <circle r="70" cx="100" cy="100" style={{ transition: 'all 0.7s ease-in-out', transformOrigin: '50% 50%', transform: 'rotate(-90deg)' }} fill="transparent" strokeLinecap="round" stroke={timerType == 'Работа' ? 'red' : 'green'} strokeWidth="2rem" strokeDasharray="439.8" strokeDashoffset={439.8 - (439.8 / currentLength) * (currentLength - countDown)}></circle>
                         </svg>
                         <div className="position-absolute" style={{ top: '50%', left: '50%', transform: 'translate(-50%,-50%)' }}>
-                            <span className="fs-1">{countDown && `${countDown + 1}`}</span><br />
+                            <span className="fs-1">{countDown && `${countDown}`}</span><br />
                             <small>{timerType && timerType}</small>
                         </div>
                     </div>
@@ -101,7 +107,7 @@ const App = () => {
                         <div className="mb-3">
                             <label htmlFor="rounds_length" className="form-label">Время раунда</label>
                             <input
-                                type="time"
+                                type="text"
                                 name="rounds_length"
                                 className="form-control"
                                 value={roundsLength}
@@ -112,7 +118,7 @@ const App = () => {
                         <div className="mb-3">
                             <label htmlFor="reast_length" className="form-label">Время отдыха</label>
                             <input
-                                type="time"
+                                type="text"
                                 name="rest_length"
                                 className="form-control"
                                 value={restLength}
@@ -121,7 +127,7 @@ const App = () => {
                                 pattern="[0-9]{2}:[0-9]{2}:[0-9]{2}" />
                         </div>
                         <div className="d-grid gap-2">
-                            <button type="submit" className="btn btn-success btn-lg">Старт</button>
+                            {countDown ? <button type="cancel" onClick={() => location.reload()} className="btn btn-danger btn-lg">Стоп</button> : <button type="submit" className="btn btn-success btn-lg">Старт</button>}
                         </div>
                     </form>
                 </div>
