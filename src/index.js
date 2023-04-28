@@ -38,9 +38,12 @@ const App = () => {
                 if (time == 1 || time == 2) {
                     //playSound('beep')
                     s.beep.play()
+                    s.beep.currentTime = 0
                 }
                 if (time == 0) {
-                    playSound('gorn')
+                    //playSound('gorn')
+                    s.gorn.play()
+                    s.gorn.currentTime = 0
                 }
                 setCountDown(time)
             }, 1000)
@@ -71,6 +74,11 @@ const App = () => {
         s.beep.play()
         s.beep.pause()
         s.beep.currentTime = 0
+
+        s.gorn = new Audio('./mp3/gorn.mp3')
+        s.gorn.play()
+        s.gorn.pause()
+        s.gorn.currentTime = 0
 
         let array = [...Array(roundsAmount).keys()]
         for (let item of array) {
