@@ -7,7 +7,7 @@
     "copy-mp3": "cp -vR ./src/mp3 ./dist",
     "init": "npm run clean-dist && npm run copy-mp3",
     "dev": "npm run init && parcel src/index.html",
-    "build": "parcel build src/index.html --public-url /",
+    "build": "parcel build src/index.html",
     "deploy": "npm run init && npm run build"
   },
   "repository": {
