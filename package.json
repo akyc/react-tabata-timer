@@ -2,6 +2,9 @@
   "name": "tabata-timer",
   "version": "1.0.0",
   "description": "Tabata timer",
+  "engines" : {
+    "node" : ">=16.0.0"
+  },
   "scripts": {
     "dev": "cp -R src/mp3 dist/ && parcel src/index.html",
     "deploy": "parcel build src/index.html --public-url / && cp -R src/mp3 dist/"
@@ -27,4 +30,4 @@
     "react": "18.2.0",
     "react-dom": "18.2.0"
   }
-}
+},
