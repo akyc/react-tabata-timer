@@ -96,12 +96,11 @@ const App = () => {
             <div className="container">
                 <div className="row d-flex justify-content-center">
                     <div className="col-12 col-md-3">
-                        <h1 className="text-center">Tabata timer</h1>
                         <p className="text-center">{round && `Раунд: ${round}`}</p>
                         <div className="text-center position-relative">
                             <svg width="200" height="200" style={{ transition: 'all 0.7s ease-in-out' }}>
                                 <circle r="70" cx="100" cy="100" fill="transparent" stroke="lightgrey" strokeWidth="2rem" strokeDasharray="439.8" strokeDashoffset="0"></circle>
-                                <circle r="70" cx="100" cy="100" style={{ transition: 'all 0.7s ease-in-out', transformOrigin: '50% 50%', transform: 'rotate(-90deg)' }} fill="transparent" strokeLinecap="round" stroke={timerType == 'Работа' ? 'red' : 'green'} strokeWidth="2rem" strokeDasharray="439.8" strokeDashoffset={439.8 - (439.8 / currentLength) * (currentLength - countDown)}></circle>
+                                <circle r="70" cx="100" cy="100" style={{ transition: 'all 0.7s ease-in-out', transformOrigin: '50% 50%', transform: 'rotate(-90deg)' }} fill="transparent" strokeLinecap="round" stroke={timerType === 'Работа' ? 'red' : 'green'} strokeWidth="2rem" strokeDasharray="439.8" strokeDashoffset={439.8 - (439.8 / currentLength) * (currentLength - countDown)}></circle>
                             </svg>
                             <div className="position-absolute" style={{ top: '50%', left: '50%', transform: 'translate(-50%,-50%)' }}>
                                 <span className="fs-1">{countDown && `${countDown}`}</span><br />
@@ -147,7 +146,7 @@ const App = () => {
                     </div>
                 </div>
             </div >
-            <span style={{ position: 'absolute', right: '5px', bottom: '5px', fontSize: '26px' }} onClick={() => window.location.href = "http://азюзин.рф"}>🐗</span>
+            <span style={{ position: 'absolute', right: '5px', bottom: '5px', fontSize: '22px' }} onClick={() => window.location.href = "http://азюзин.рф"}>🐗</span>
         </>
     )
 }
