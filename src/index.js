@@ -5,9 +5,9 @@ import { useState } from "react";
 
 const App = () => {
     const defaultSettings = {
-        rounds: 2,
-        length: '00:00:10',
-        rest: '00:00:05'
+        rounds: 8,
+        length: '00:00:20',
+        rest: '00:00:10'
 
     }
 
