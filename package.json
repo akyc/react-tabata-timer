@@ -2,18 +2,19 @@
   "name": "tabata-timer",
   "version": "1.0.0",
   "description": "Tabata timer",
-  "engines" : {
-    "node" : ">=16.0.0"
-  },
   "scripts": {
-    "dev": "cp -R src/mp3 dist/ && parcel src/index.html",
-    "deploy": "parcel build src/index.html --public-url / && cp -R src/mp3 dist/"
+    "clean-dist": "rm -rf dist && mkdir dist",
+    "copy-mp3": "cp -vR ./src/mp3 ./dist",
+    "init": "npm run clean-dist && npm run copy-mp3",
+    "dev": "npm run init && parcel src/index.html",
+    "build": "parcel build src/index.html",
+    "deploy": "npm run init && npm run build"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/akyc/tabata-timer.git"
   },
-  "keywords": ["tabata-timer.ru", "react"],
+  "keywords": ["react", "tabata-timer.ru"],
   "author": "Andrew Zyuzin",
   "license": "ISC",
   "bugs": {
