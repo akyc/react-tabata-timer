@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/akyc/tabata-timer.git"
   },
-  "keywords": [],
+  "keywords": ["tabata-timer.ru", "react"],
   "author": "Andrew Zyuzin",
   "license": "ISC",
   "bugs": {
