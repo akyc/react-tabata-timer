@@ -2,5 +2,15 @@
 # Таймер для табата тренировок
 C использование библиотеки [React](https://react.dev/)
 
-[Демо](https://react-tabata-timer.netlify.app/)
+[Демо](http://tabata-timer.ru/)
 
+#TODO
+
+1. Добавить [react-router](https://reactrouter.com/en/main) и подстраницы:
+   * Welcome со слайдером ([swiper](https://github.com/nolimits4web/Swiper)) и кнопкой входа
+   * Login для авторизации (+ через соц. сети)
+   * Register для регистрации (возможно [паспорт](https://www.passportjs.org/))
+2. Добавить RTK
+   * Все props перенести в redux
+   * Сохранять настройки в localStorage с redux-persist
+3. Добавить backend на nestjs
