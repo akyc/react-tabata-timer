@@ -10,6 +10,13 @@ html, body{
     color: #FFFFFF;
 }
 
+header{
+    background: rgb(8,10,22);
+    background: linear-gradient(180deg, rgba(8,10,22, .8) 0%, rgba(8,10,22,0) 100%);
+    backdrop-filter: blur(5);
+}
+
+
 main > .container,
 main > .container-fluid{
     padding: 60px 15px;

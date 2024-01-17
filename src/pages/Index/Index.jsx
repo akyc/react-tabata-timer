@@ -11,9 +11,8 @@ function Index() {
           <Slider />
           <div className='button-container py-3 text-center'>
             <NavLink
-              to={path.tabata}
+              to={path.tabata.url}
               className='btn btn-outline-light btn-lg'
-              state={{ background: location }}
             >
               Тренировка
             </NavLink>

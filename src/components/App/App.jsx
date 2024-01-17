@@ -7,6 +7,7 @@ import Tabata from '../../pages/Tabata/Tabata'
 import User from '../../pages/User/User'
 import NotFound from '../../pages/NotFound/NotFound'
 import Help from '../../pages/Help/Help'
+import Meta from '../Meta/Meta'
 
 function App() {
   const location = useLocation()
@@ -16,20 +17,20 @@ function App() {
       <Routes>
         <Route
           index
-          path={path.index}
-          element={<Index />}
+          path={path.index.url}
+          element={<Meta element={<Index />} />}
         />
         <Route
-          path={path.tabata}
-          element={<Tabata />}
+          path={path.tabata.url}
+          element={<Meta element={<Tabata />} />}
         />
         <Route
-          path={path.user}
-          element={<User />}
+          path={path.user.url}
+          element={<Meta element={<User />} />}
         />
         <Route
-          path={path.help}
-          element={<Help />}
+          path={path.help.url}
+          element={<Meta element={<Help />} />}
         />
         <Route
           path='*'

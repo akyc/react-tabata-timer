@@ -5,11 +5,11 @@ import { path } from '../../utils/constants'
 function AppHeader(props) {
   const { pathname } = useLocation()
   return (
-    <header>
-      <nav className={'navbar fixed-top'}>
+    <header className={'fixed-top'}>
+      <nav className={'navbar'}>
         <div className='container-fluid'>
           <div className='col-auto'>
-            {pathname !== path.index && (
+            {pathname !== path.index.url && (
               <NavLink
                 to='..'
                 relative='path'
@@ -39,7 +39,7 @@ function AppHeader(props) {
             )}
           </div>
           <div className='col-auto'>
-            <NavLink to={path.user}>
+            <NavLink to={path.user.url}>
               <span className='header__user-button'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
@@ -63,7 +63,7 @@ function AppHeader(props) {
               </span>
             </NavLink>
             <NavLink
-              to={path.help}
+              to={path.help.url}
               className={'ms-2'}
             >
               <span className='header__user-button'>
