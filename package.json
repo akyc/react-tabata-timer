@@ -6,7 +6,8 @@
     "clean-dist": "rm -rf dist && mkdir dist",
     "copy-mp3": "cp -vR ./src/mp3 ./dist",
     "copy-img": "cp -vR ./src/img ./dist",
-    "init": "npm run clean-dist && npm run copy-mp3 && npm run copy-img",
+    "copy-server": "cp -vR ./src/server/ ./dist",
+    "init": "npm run clean-dist && npm run copy-mp3 && npm run copy-img && npm run copy-server",
     "dev": "npm run init && parcel src/index.html",
     "build": "parcel build src/index.html",
     "deploy": "npm run init && npm run build"

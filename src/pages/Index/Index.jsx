@@ -15,7 +15,7 @@ function Index() {
               className='btn btn-outline-light btn-lg'
               state={{ background: location }}
             >
-              Тренироваться
+              Тренировка
             </NavLink>
           </div>
         </div>

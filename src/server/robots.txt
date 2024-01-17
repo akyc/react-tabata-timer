@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: *?
+
+Host: tabata-timer.ru
+Sitemap: http://tabata-timer.ru/sitemap.xml

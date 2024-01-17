@@ -1,17 +1,19 @@
 import React from 'react'
-import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import { path } from '../../utils/constants'
 
 function AppHeader(props) {
-  const location = useLocation()
-  const background = location.state?.background
+  const { pathname } = useLocation()
   return (
     <header>
       <nav className={'navbar fixed-top'}>
         <div className='container-fluid'>
           <div className='col-auto'>
-            {background && (
-              <NavLink to={-1}>
+            {pathname !== path.index && (
+              <NavLink
+                to='..'
+                relative='path'
+              >
                 <span className='header__user-button'>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -37,10 +39,7 @@ function AppHeader(props) {
             )}
           </div>
           <div className='col-auto'>
-            <NavLink
-              to={path.user}
-              state={{ background: location }}
-            >
+            <NavLink to={path.user}>
               <span className='header__user-button'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
@@ -66,7 +65,6 @@ function AppHeader(props) {
             <NavLink
               to={path.help}
               className={'ms-2'}
-              state={{ background: location }}
             >
               <span className='header__user-button'>
                 <svg

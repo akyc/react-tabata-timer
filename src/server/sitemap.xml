@@ -1,0 +1,26 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>http://tabata-timer.ru/</loc>
+        <lastmod>2024-01-17T12:40:02+03:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1</priority>
+    </url>
+    <url>
+        <loc>http://tabata-timer.ru/help</loc>
+        <lastmod>2024-01-17T12:40:02+03:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.25</priority>
+    </url>
+    <url>
+        <loc>http://tabata-timer.ru/user</loc>
+        <lastmod>2024-01-17T12:40:02+03:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.25</priority>
+    </url>
+    <url>
+        <loc>http://tabata-timer.ru/tabata</loc>
+        <lastmod>2024-01-17T12:40:02+03:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+</urlset>
