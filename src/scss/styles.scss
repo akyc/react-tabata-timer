@@ -1,7 +1,9 @@
 @import "node_modules/bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 html, body{
     height: 100%;
+    font-family: 'Montserrat', sans-serif;
 }
 
 #app{
@@ -13,10 +15,12 @@ html, body{
 header{
     background: rgb(8,10,22);
     background: linear-gradient(180deg, rgba(8,10,22, .8) 0%, rgba(8,10,22,0) 100%);
-    backdrop-filter: blur(5);
+    backdrop-filter: blur(2);
 }
 
-
+main {
+    height: 100%;
+}
 main > .container,
 main > .container-fluid{
     padding: 60px 15px;
@@ -37,3 +41,44 @@ main > .container-fluid{
     background: linear-gradient(0deg, rgba(8,10,22,1) 40%, rgba(8,10,22,0) 100%);
 }
 
+.slider-outer {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+}
+.sample-slider{
+    min-height: 100vh;
+    display: flex;
+}
+.swiper {
+    height: 100%;
+}
+.swiper-wrapper {
+    height: 100%;
+    -webkit-transition-timing-function: linear !important;
+    -o-transition-timing-function: linear !important;
+    transition-timing-function: linear !important;
+}
+.sample-slider img {
+    display: block;
+    height: 100%;
+    width: auto;
+}
+
+.button-container{
+    padding: 60px 0 30px 0;
+    z-index: 100;
+    background: rgb(8,10,22);
+    background: linear-gradient(0deg, rgba(8,10,22,.99) 25%, rgba(8,10,22,0) 100%);
+}
+.button-container .btn{
+    border-radius: 25px;
+    padding: 10px 45px;
+    font-size: 14px;
+    font-weight: bold;
+    background: #23D2FD;
+    color: #080A16;
+    letter-spacing: calc(-.037em + .526px);
+    backdrop-filter: blur(2);
+}

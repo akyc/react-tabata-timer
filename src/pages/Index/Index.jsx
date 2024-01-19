@@ -5,21 +5,19 @@ import Slider from '../../components/Slider/Slider'
 function Index() {
   const location = useLocation()
   return (
-    <div className='flex-column align-items-center container'>
-      <div className='row'>
-        <div className='col-12'>
-          <Slider />
-          <div className='button-container py-3 text-center'>
-            <NavLink
-              to={path.tabata.url}
-              className='btn btn-outline-light btn-lg'
-            >
-              Тренировка
-            </NavLink>
-          </div>
-        </div>
+    <>
+      <div className='flex-column align-items-center h-100'>
+        <Slider />
       </div>
-    </div>
+      <div className='button-container text-center position-absolute bottom-0 w-100'>
+        <NavLink
+          to={path.tabata.url}
+          className='btn btn-lg'
+        >
+          Тренировка
+        </NavLink>
+      </div>
+    </>
   )
 }
 
