@@ -1,11 +1,16 @@
 import React, { useState } from 'react'
+import { selectTimer } from '../../store/tabataSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
-function Tabata(props) {
-  const defaultSettings = {
-    rounds: 8,
-    length: '00:00:20',
-    rest: '00:00:10',
-  }
+function Tabata() {
+  const defaultSettings = useSelector(selectTimer)
+  const dispatch = useDispatch()
+  console.log('ds', defaultSettings)
+  //     {
+  //   rounds: 8,
+  //   length: '00:00:20',
+  //   rest: '00:00:10',
+  // }
 
   const [roundsAmount, setRoundsAmount] = useState(defaultSettings.rounds)
   const [roundsLength, setRoundsLength] = useState(defaultSettings.length)
@@ -119,7 +124,9 @@ function Tabata(props) {
               stroke={timerType === 'Работа' ? 'red' : 'green'}
               strokeWidth='2rem'
               strokeDasharray='439.8'
-              strokeDashoffset={439.8 - (439.8 / currentLength) * (currentLength - countDown)}
+              strokeDashoffset={
+                currentLength && countDown ? 439.8 - (439.8 / currentLength) * (currentLength - countDown) : 0
+              }
             ></circle>
           </svg>
           <div

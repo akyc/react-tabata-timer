@@ -6,14 +6,16 @@ C использование библиотеки [React](https://react.dev/)
 
 #TODO
 
-1. Добавить [react-router](https://reactrouter.com/en/main) и подстраницы:
-   * Welcome со слайдером ([swiper](https://github.com/nolimits4web/Swiper)) и кнопкой входа
+~~1. Добавить [react-router](https://reactrouter.com/en/main) и подстраницы:~~
+   ~~* Welcome со слайдером ([swiper](https://github.com/nolimits4web/Swiper)) и кнопкой входа~~
    * Login для авторизации (+ через соц. сети)
    * Register для регистрации (возможно [паспорт](https://www.passportjs.org/))
-2. Добавить RTK
+
+2. Изменить дизайн у инпутов для ввода времени на [IOS Style Picker Loop](https://www.embla-carousel.com/examples/predefined/#ios-style-picker-loop)
+3. Добавить [RTK](https://redux-toolkit.js.org/)
    * Все props перенести в redux
-   * Сохранять настройки в localStorage с redux-persist
-3. Добавить backend на nestjs
-4. Добавить дополнительные настройки:
+   * Сохранять настройки в localStorage с [redux-persist](https://github.com/rt2zz/redux-persist)
+4. Добавить backend на nestjs
+5. Добавить дополнительные настройки:
    * пауза таймера
    * выбирать мелодии гудка
