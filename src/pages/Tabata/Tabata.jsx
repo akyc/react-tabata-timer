@@ -1,20 +1,15 @@
 import React, { useState } from 'react'
-import { selectTimer } from '../../store/tabataSlice'
+import { selectTabata } from '../../store/tabataSlice'
 import { useDispatch, useSelector } from 'react-redux'
+import { selectSound } from '../../store/soundSlice'
 
 function Tabata() {
-  const defaultSettings = useSelector(selectTimer)
+  const defaultSettings = useSelector(selectTabata)
   const dispatch = useDispatch()
-  console.log('ds', defaultSettings)
-  //     {
-  //   rounds: 8,
-  //   length: '00:00:20',
-  //   rest: '00:00:10',
-  // }
 
   const [roundsAmount, setRoundsAmount] = useState(defaultSettings.rounds)
-  const [roundsLength, setRoundsLength] = useState(defaultSettings.length)
-  const [restLength, setRestLength] = useState(defaultSettings.rest)
+  const [roundsLength, setRoundsLength] = useState(defaultSettings.workTime)
+  const [restLength, setRestLength] = useState(defaultSettings.restTime)
   const [countDown, setCountDown] = useState()
   const [round, setRound] = useState(null)
   const [timerType, setTimerType] = useState()
@@ -55,10 +50,11 @@ function Tabata() {
     return h * 60 * 60 + m * 60 + s
   }
   function playSound(type) {
-    const sounds = {
-      beep: './mp3/beep.mp3',
-      gorn: './mp3/gorn.mp3',
-    }
+    const sounds = useSelector(selectSound)
+    //     {
+    //   beep: './mp3/beep.mp3',
+    //   gorn: './mp3/gorn.mp3',
+    // }
     const audio = new Audio(sounds[type])
     audio.play()
     return new Promise((resolve) => {

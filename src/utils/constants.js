@@ -21,3 +21,8 @@ export const path = {
     description: 'Полезная информация по натсройке тамера для своих стренировок',
   },
 }
+
+export const sounds = {
+  beep: './mp3/beep.mp3',
+  horn: './mp3/horn.mp3',
+}

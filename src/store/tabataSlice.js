@@ -15,9 +15,8 @@ export const tabataSlice = createSlice({
   },
 })
 
-console.log(tabataSlice)
 export const { setTabata } = tabataSlice.actions
 
-export const selectTimer = (state) => state
+export const selectTabata = (state) => state.tabata
 
 export default tabataSlice.reducer
