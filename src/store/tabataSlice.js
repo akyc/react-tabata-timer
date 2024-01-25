@@ -1,21 +1,29 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { sounds } from '../utils/constants'
 
 export const tabataSlice = createSlice({
   name: 'tabata',
-  initialState: {
-    rounds: 8,
-    workTime: '00:00:20',
-    restTime: '00:00:10',
-  },
+  initialState: [
+    {
+      id: 0,
+      name: 'Твой первый таймер 👋🏻',
+      rounds: 8,
+      workTime: 20,
+      restTime: 10,
+      prepareTime: 3,
+      sounds: {
+        short: sounds.beep,
+        long: sounds.horn,
+      },
+      removable: false,
+    },
+  ],
   reducers: {
-    setTabata: (state, action) => ({
-      ...state,
-      ...action.payload,
-    }),
+    addTimer: (state, action) => [...state, action.payload],
   },
 })
 
-export const { setTabata } = tabataSlice.actions
+export const { addTimer } = tabataSlice.actions
 
 export const selectTabata = (state) => state.tabata
 

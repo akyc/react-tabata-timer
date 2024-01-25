@@ -8,6 +8,7 @@ import User from '../../pages/User/User'
 import NotFound from '../../pages/NotFound/NotFound'
 import Help from '../../pages/Help/Help'
 import Meta from '../Meta/Meta'
+import Create from '../../pages/Tabata/Create'
 
 function App() {
   const location = useLocation()
@@ -21,8 +22,16 @@ function App() {
           element={<Meta element={<Index />} />}
         />
         <Route
-          path={path.tabata.url}
+          path={path.tabata_list.url}
           element={<Meta element={<Tabata />} />}
+        />
+        <Route
+          path={path.tabata_start.url}
+          element={<Meta element={<Create />} />}
+        />
+        <Route
+          path={path.tabata_create.url}
+          element={<Meta element={<Create />} />}
         />
         <Route
           path={path.user.url}

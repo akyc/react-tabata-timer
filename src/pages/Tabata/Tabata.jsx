@@ -1,214 +1,89 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { selectTabata } from '../../store/tabataSlice'
-import { useDispatch, useSelector } from 'react-redux'
-import { selectSound } from '../../store/soundSlice'
+import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { path } from '../../utils/constants'
 
 function Tabata() {
-  const defaultSettings = useSelector(selectTabata)
-  const dispatch = useDispatch()
+  const timers = useSelector(selectTabata)
 
-  const [roundsAmount, setRoundsAmount] = useState(defaultSettings.rounds)
-  const [roundsLength, setRoundsLength] = useState(defaultSettings.workTime)
-  const [restLength, setRestLength] = useState(defaultSettings.restTime)
-  const [countDown, setCountDown] = useState()
-  const [round, setRound] = useState(null)
-  const [timerType, setTimerType] = useState()
-  const [currentLength, setCurrentLength] = useState(0)
-  const currents = {
-    'Подготовка': 3,
-    'Работа': timeConverter(roundsLength),
-    'Отдых': timeConverter(restLength),
-  }
-
-  function roundTimer(time, type) {
-    setCurrentLength(currents[type])
-    setTimerType(type)
-    return new Promise((resolve) => {
-      let counter = setInterval(() => {
-        time = time - 1
-        if (time < 0) {
-          clearInterval(counter)
-          resolve()
-          return
-        }
-        if (time === 1 || time === 2) {
-          //playSound('beep')
-          s.beep.play()
-          s.beep.currentTime = 0
-        }
-        if (time === 0) {
-          //playSound('gorn')
-          s.gorn.play()
-          s.gorn.currentTime = 0
-        }
-        setCountDown(time)
-      }, 1000)
-    })
-  }
-  function timeConverter(time) {
-    let [h, m, s] = time.split(':').map((el) => parseInt(el))
-    return h * 60 * 60 + m * 60 + s
-  }
-  function playSound(type) {
-    const sounds = useSelector(selectSound)
-    //     {
-    //   beep: './mp3/beep.mp3',
-    //   gorn: './mp3/gorn.mp3',
-    // }
-    const audio = new Audio(sounds[type])
-    audio.play()
-    return new Promise((resolve) => {
-      audio.onended = () => {
-        resolve()
-      }
-    })
-  }
-  let s = {}
-  async function handleSubmit(e) {
-    e.preventDefault()
-    s.beep = new Audio('./mp3/beep.mp3')
-    s.beep.play()
-    s.beep.pause()
-    s.beep.currentTime = 0
-
-    s.gorn = new Audio('./mp3/gorn.mp3')
-    s.gorn.play()
-    s.gorn.pause()
-    s.gorn.currentTime = 0
-
-    let array = [...Array(roundsAmount).keys()]
-    for (let item of array) {
-      setRound(`${item + 1}/${roundsAmount}`)
-      if (item === 0) {
-        await roundTimer(3, 'Подготовка')
-      }
-      await roundTimer(timeConverter(roundsLength), 'Работа')
-      await roundTimer(timeConverter(restLength), 'Отдых')
-    }
-  }
   return (
     <div className='container-fluid d-flex align-items-center justify-content-center'>
       <div className='col-12 col-md-3 align-self-center'>
-        <p className='text-center'>{round && `Раунд: ${round}`}</p>
-        <div className='text-center position-relative'>
-          <svg
-            width='200'
-            height='200'
-            style={{ transition: 'all 0.7s ease-in-out' }}
+        <h2 className={'d-block'}>
+          <span>Таймеры</span>
+          <Link
+            to={path.tabata_create.url}
+            className='btn ms-auto'
           >
-            <circle
-              r='70'
-              cx='100'
-              cy='100'
-              fill='transparent'
-              stroke='lightgrey'
-              strokeWidth='2rem'
-              strokeDasharray='439.8'
-              strokeDashoffset='0'
-            ></circle>
-            <circle
-              r='70'
-              cx='100'
-              cy='100'
-              style={{
-                transition: 'all 0.7s ease-in-out',
-                transformOrigin: '50% 50%',
-                transform: 'rotate(-90deg)',
-              }}
-              fill='transparent'
-              strokeLinecap='round'
-              stroke={timerType === 'Работа' ? 'red' : 'green'}
-              strokeWidth='2rem'
-              strokeDasharray='439.8'
-              strokeDashoffset={
-                currentLength && countDown ? 439.8 - (439.8 / currentLength) * (currentLength - countDown) : 0
-              }
-            ></circle>
-          </svg>
-          <div
-            className='position-absolute'
-            style={{ top: '50%', left: '50%', transform: 'translate(-50%,-50%)' }}
-          >
-            <span className='fs-1'>{countDown && `${countDown}`}</span>
-            <br />
-            <small>{timerType && timerType}</small>
-          </div>
-        </div>
-        <form
-          action=''
-          onSubmit={handleSubmit}
-        >
-          <div className='mb-3'>
-            <label
-              htmlFor='rounds_amount'
-              className='form-label'
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              width='24'
+              height='24'
+              viewBox='-2 -2 24 24'
             >
-              Число раундов
-            </label>
-            <input
-              type='number'
-              name='rounds_amount'
-              onChange={(e) => setRoundsAmount(parseInt(e.target.value))}
-              value={roundsAmount}
-              className='form-control'
-              step='1'
-              min='1'
-              pattern='[0-9]{2}'
-            />
-          </div>
-          <div className='mb-3'>
-            <label
-              htmlFor='rounds_length'
-              className='form-label'
-            >
-              Время раунда
-            </label>
-            <input
-              type='text'
-              name='rounds_length'
-              className='form-control'
-              value={roundsLength}
-              onChange={(e) => setRoundsLength(e.target.value)}
-              step='1'
-              pattern='[0-9]{2}:[0-9]{2}:[0-9]{2}'
-            />
-          </div>
-          <div className='mb-3'>
-            <label
-              htmlFor='reast_length'
-              className='form-label'
-            >
-              Время отдыха
-            </label>
-            <input
-              type='text'
-              name='rest_length'
-              className='form-control'
-              value={restLength}
-              onChange={(e) => setRestLength(e.target.value)}
-              step='1'
-              pattern='[0-9]{2}:[0-9]{2}:[0-9]{2}'
-            />
-          </div>
-          <div className='d-grid gap-2'>
-            {countDown ? (
-              <button
-                type='cancel'
-                onClick={() => location.reload()}
-                className='btn btn-danger btn-lg'
+              <path
+                fill='white'
+                d='M10 20C4.477 20 0 15.523 0 10S4.477 0 10 0s10 4.477 10 10s-4.477 10-10 10m0-2a8 8 0 1 0 0-16a8 8 0 0 0 0 16m1-7v4a1 1 0 0 1-2 0v-4H5a1 1 0 0 1 0-2h4V5a1 1 0 1 1 2 0v4h4a1 1 0 0 1 0 2z'
+              />
+            </svg>
+          </Link>
+        </h2>
+
+        {timers &&
+          timers.map(({ id, name, rounds, workTime, restTime, removable }, i) => {
+            return (
+              <div
+                className='border rounded p-3 mb-2 timer'
+                key={i}
               >
-                Стоп
-              </button>
-            ) : (
-              <button
-                type='submit'
-                className='btn btn-success btn-lg'
-              >
-                Старт
-              </button>
-            )}
-          </div>
-        </form>
+                <div className='row'>
+                  <div className='col-10 pb-2 timer_name'>{name}</div>
+                  <div className='col-2 d-flex align-items-start justify-content-end'>
+                    <button className='btn p-0'>
+                      <svg
+                        xmlns='http://www.w3.org/2000/svg'
+                        width='20'
+                        height='20'
+                        viewBox='-5 -2 24 24'
+                      >
+                        <path
+                          fill='#666'
+                          d='M12 10a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2V5a5 5 0 1 1 10 0zm-5 7a2 2 0 1 0 0-4a2 2 0 0 0 0 4m3-7V5a3 3 0 1 0-6 0v5z'
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                  <div className='col-8'>
+                    <small className='text-white-50 timer_info-title'>Раунды: Работа / Отдых</small>
+                    <br />
+                    <span className='timer_info'>
+                      {rounds} <span className='separator'>:</span> {workTime} <span className='separator'>/</span>{' '}
+                      {restTime}
+                    </span>
+                  </div>
+                  <div className='col-4 d-flex align-items-end justify-content-end'>
+                    <Link
+                      className={'text-white'}
+                      to={`${path.tabata_list.url}/${id}`}
+                    >
+                      <svg
+                        xmlns='http://www.w3.org/2000/svg'
+                        width='24'
+                        height='24'
+                        viewBox='-2 -2 24 24'
+                      >
+                        <path
+                          fill='currentColor'
+                          d='M10 20C4.477 20 0 15.523 0 10S4.477 0 10 0s10 4.477 10 10s-4.477 10-10 10m0-2a8 8 0 1 0 0-16a8 8 0 0 0 0 16m4.126-6.254l-4.055 2.898c-.905.646-2.13.389-2.737-.576A2.201 2.201 0 0 1 7 12.898V7.102C7 5.942 7.883 5 8.972 5c.391 0 .774.124 1.099.356l4.055 2.898c.905.647 1.146 1.952.54 2.917a2.042 2.042 0 0 1-.54.575M8.972 7.102v5.796L13.027 10z'
+                        />
+                      </svg>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            )
+          })}
       </div>
     </div>
   )

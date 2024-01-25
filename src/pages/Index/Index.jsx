@@ -11,7 +11,7 @@ function Index() {
       </div>
       <div className='button-container text-center position-absolute bottom-0 w-100'>
         <NavLink
-          to={path.tabata.url}
+          to={path.tabata_list.url}
           className='btn btn-lg'
         >
           Тренировка
