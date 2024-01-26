@@ -10,7 +10,7 @@ function Tabata() {
   return (
     <div className='container-fluid d-flex align-items-center justify-content-center'>
       <div className='col-12 col-md-3 align-self-center'>
-        <h2 className={'d-block'}>
+        <h2 className={'d-flex justify-content-between mb-3'}>
           <span>Таймеры</span>
           <Link
             to={path.tabata_create.url}
@@ -18,8 +18,8 @@ function Tabata() {
           >
             <svg
               xmlns='http://www.w3.org/2000/svg'
-              width='24'
-              height='24'
+              width='28'
+              height='28'
               viewBox='-2 -2 24 24'
             >
               <path

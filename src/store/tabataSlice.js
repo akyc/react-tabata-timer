@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { sounds } from '../utils/constants'
+import { nanoid } from 'nanoid'
 
 export const tabataSlice = createSlice({
   name: 'tabata',
   initialState: [
     {
-      id: 0,
+      id: nanoid(),
       name: 'Твой первый таймер 👋🏻',
       rounds: 8,
       workTime: 20,
