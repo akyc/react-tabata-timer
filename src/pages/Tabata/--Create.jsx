@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { selectTabata } from '../../store/tabataSlice'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectSound } from '../../store/soundSlice'
+import { selectSound } from '../../store/userSlice'
 
 function Tabata() {
   const defaultSettings = useSelector(selectTabata)

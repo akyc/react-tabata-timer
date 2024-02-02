@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/akyc/tabata-timer#readme",
   "devDependencies": {
+    "@parcel/transformer-less": "^2.8.3",
     "@parcel/transformer-sass": "2.8.3",
     "eslint": "^8.56.0",
     "eslint-config-airbnb": "^19.0.4",
@@ -47,6 +48,7 @@
     "react-dom": "18.2.0",
     "react-redux": "^9.1.0",
     "react-router-dom": "6.21.1",
+    "rolldate-full": "^3.2.3",
     "swiper": "^8.4.7"
   }
 }

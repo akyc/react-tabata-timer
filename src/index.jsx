@@ -6,6 +6,11 @@ import { Provider } from 'react-redux'
 
 const container = document.getElementById('app')
 const root = createRoot(container)
+
+store.subscribe(() => {
+  localStorage.setItem('tabataTimerRu', JSON.stringify(store.getState()))
+})
+
 root.render(
   <BrowserRouter>
     <Provider store={store}>

@@ -34,6 +34,6 @@ export const path = {
 }
 
 export const sounds = {
-  beep: './mp3/beep.mp3',
-  horn: './mp3/horn.mp3',
+  beep: '/mp3/beep.mp3',
+  horn: '/mp3/horn.mp3',
 }

@@ -17,8 +17,8 @@ function AppHeader(props) {
                 <span className='header__user-button'>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
-                    width='28'
-                    height='28'
+                    width='30'
+                    height='30'
                     viewBox='-2 -2 24 24'
                   >
                     <rect
@@ -43,8 +43,8 @@ function AppHeader(props) {
               <span className='header__user-button'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
-                  width='28'
-                  height='28'
+                  width='30'
+                  height='30'
                   viewBox='-2 -2 24 24'
                 >
                   <rect
@@ -69,8 +69,8 @@ function AppHeader(props) {
               <span className='header__user-button'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
-                  width='28'
-                  height='28'
+                  width='30'
+                  height='30'
                   viewBox='-2 -2 24 24'
                 >
                   <rect

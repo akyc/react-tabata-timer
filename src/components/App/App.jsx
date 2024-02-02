@@ -9,6 +9,7 @@ import NotFound from '../../pages/NotFound/NotFound'
 import Help from '../../pages/Help/Help'
 import Meta from '../Meta/Meta'
 import Create from '../../pages/Tabata/Create'
+import Start from '../../pages/Tabata/Start'
 
 function App() {
   const location = useLocation()
@@ -27,7 +28,7 @@ function App() {
         />
         <Route
           path={path.tabata_start.url}
-          element={<Meta element={<Create />} />}
+          element={<Meta element={<Start />} />}
         />
         <Route
           path={path.tabata_create.url}
